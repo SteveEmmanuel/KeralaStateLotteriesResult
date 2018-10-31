@@ -1,8 +1,7 @@
-from sqlalchemy import create_engine, ForeignKey
-from sqlalchemy import Column, Date, Integer, String,JSON
+from sqlalchemy import create_engine
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
-from datetime import datetime
+
 from magicJSON import MagicJSON
 
 engine = create_engine('sqlite:///lotteries.db', echo=True)
