@@ -1,0 +1,135 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="prizes panel panel-success">
+    <div class="panel-heading">
+        <h4 class="panel-title">{{lottery['name']}} , {{lottery['series']}} draw held on {{lottery['date']}}</h4>
+    </div>
+    <div class="panel-body">
+        <div class="first-prize panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">First Prize - Rs. {{lottery['details']['first']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {{lottery['details']['first']['prizes']}}
+            </div>
+        </div>
+
+        <div class="consolation-prize  panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Consolation Prize - Rs. {{lottery['details']['consolation']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {% for prize in lottery['details']['consolation']['prizes'] %}
+                    <span class="col-md-3">{{prize}}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="second-prize panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Second Prize - Rs. {{lottery['details']['second']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {{lottery['details']['second']['prizes']}}
+            </div>
+        </div>
+
+        <div class="third-prize panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Third Prize - Rs. {{lottery['details']['third']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {{lottery['details']['third']['prizes']}}
+            </div>
+        </div>
+
+         <div class="fourth-prize panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Fourth Prize - Rs. {{lottery['details']['fourth']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {% for prize in lottery['details']['fourth']['prizes'] %}
+                    <span class="col-md-3">{{prize}}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="fifth-prize  panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Fifth Prize - Rs. {{lottery['details']['fifth']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {% for prize in lottery['details']['fifth']['prizes'] %}
+                    <span class="col-md-3">{{prize}}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="sixth-prize  panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Sixth Prize - Rs. {{lottery['details']['sixth']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {% for prize in lottery['details']['sixth']['prizes'] %}
+                    <span class="col-md-3">{{prize}}</span>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="seventh-prize  panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Seventh Prize - Rs. {{lottery['details']['seventh']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {% for prize in lottery['details']['seventh']['prizes'] %}
+                    <span class="col-md-3">{{prize}}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% if eighth in lottery['details'] %}
+        <div class="eighth-prize  panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Eighth Prize - Rs. {{lottery['details']['eighth']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {% for prize in lottery['details']['eighth']['prizes'] %}
+                    <span class="col-md-3">{{prize}}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% if ninth in lottery['details'] %}
+        <div class="ninth-prize  panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Ninth Prize - Rs. {{lottery['details']['ninth']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {% for prize in lottery['details']['ninth']['prizes'] %}
+                    <span class="col-md-3">{{prize}}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% if tenth in lottery['details'] %}
+        <div class="tenth-prize  panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Tenth Prize - Rs. {{lottery['details']['tenth']['prize_money']}}</h3>
+            </div>
+            <div class="panel-body">
+                {% for prize in lottery['details']['tenth']['prizes'] %}
+                    <span class="col-md-3">{{prize}}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    $( document ).ready(function() {
+        console.log( "ready!" );
+    });
+</script>
+{% endblock %}
