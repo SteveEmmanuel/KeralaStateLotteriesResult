@@ -1,11 +1,9 @@
 import requests
-from app import app, db
+from app import db
 from db_creator import Lottery
-from datetime import datetime
 from scrape_pdf import scrape_pdf
 import re
 import os
-import datetime
 import dateparser
 
 base_url = "http://103.251.43.52/lottery/reports/draw/"

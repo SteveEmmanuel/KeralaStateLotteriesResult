@@ -1,22 +1,16 @@
 from app import app, db
 import flask
 from db_setup import init_db
-from flask import Flask, render_template, request
+from flask import render_template, request
 import socket
 from db_creator import Lottery
-from sqlalchemy import or_, asc, func
-from datetime import datetime
-import json
+from sqlalchemy import or_
+
 
 init_db()
 
 @app.route('/')
 def run():
-    #lottery = Lottery(name = 'test3', series = 'script 3', date = datetime.utcnow())
-    #db.session.add(lottery)
-    #db.session.commit()
-    #query = db.session.query(Lottery)
-    #q = query.all()
     return render_template('index.html')
 
 @app.route('/result/<lottery_id>')

@@ -1,7 +1,6 @@
 import urllib2
 from bs4 import BeautifulSoup
-import requests
-import  re
+import re
 from download import download_file
 
 page_url = "http://103.251.43.52/lottery/weblotteryresult.php"

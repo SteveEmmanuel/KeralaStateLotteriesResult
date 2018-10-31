@@ -1,5 +1,4 @@
 from app import db
-from datetime import datetime
 from magicJSON import MagicJSON
 
 class Lottery(db.Model):

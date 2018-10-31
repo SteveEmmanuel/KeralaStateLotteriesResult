@@ -1,7 +1,5 @@
-import requests
 from app import app, db
 from db_creator import Lottery
-from datetime import datetime
 from scrape_pdf import scrape_pdf
 import os
 
