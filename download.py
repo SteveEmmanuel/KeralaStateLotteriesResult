@@ -5,6 +5,13 @@ from scrape_pdf import scrape_pdf
 import re
 import os
 import dateparser
+import logging
+
+logging.basicConfig(
+    filename="/home/steveisredatw/task.log",
+    level=logging.DEBUG
+)
+
 
 base_url = "http://103.251.43.52/lottery/reports/draw/"
 directory = "pdf/"
@@ -26,7 +33,7 @@ def download_file(file_name):
         f.write(r.content)
     scrape_dict = scrape_pdf(directory+file_name+".pdf")
     print scrape_dict
-
+    logging.info(scrape_dict)
     date = dateparser.parse(scrape_dict['info']['date'])
     series = re.findall(r'([\w-]*)(th|rd|nd|st)', scrape_dict['info']['series']).pop()[0]
     exists = db.session.query(Lottery.id).filter_by(series=series).scalar() is not None
@@ -34,6 +41,10 @@ def download_file(file_name):
         lottery = Lottery(name=scrape_dict['info']['name'], series=series,
                           date=date.__format__("%d-%m-%Y"), details=scrape_dict['prizes'])
         db.session.add(lottery)
-        db.session.commit()
+        try:
+            db.session.commit()
+            logging.info("commit success" + lottery.series)
+        except Exception as e:
+            logging.info("commit failed"+ lottery.series)
     #query = db.session.query(Lottery)
     #q = query.all()
