@@ -14,7 +14,7 @@ logging.basicConfig(
 
 
 base_url = "http://103.251.43.52/lottery/reports/draw/"
-directory = "pdf/"
+directory = os.path.dirname(os.path.realpath(__file__))+"/pdf/"
 
 def download_file(file_name):
     file_url = base_url+file_name+".pdf"
