@@ -4,10 +4,10 @@ import re
 from download import download_file
 import logging
 
-logging.basicConfig(
+'''logging.basicConfig(
     filename="/home/steveisredatw/task.log",
     level=logging.DEBUG
-)
+)'''
 
 logging.info("[start script]")
 page_url = "http://103.251.43.52/lottery/weblotteryresult.php"

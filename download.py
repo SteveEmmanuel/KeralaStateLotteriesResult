@@ -4,13 +4,13 @@ from db_creator import Lottery
 from scrape_pdf import scrape_pdf
 import re
 import os
-import dateparser
+from datetime import datetime
 import logging
 
-logging.basicConfig(
+'''logging.basicConfig(
     filename="/home/steveisredatw/task.log",
     level=logging.DEBUG
-)
+)'''
 
 
 base_url = "http://103.251.43.52/lottery/reports/draw/"
@@ -34,12 +34,12 @@ def download_file(file_name):
     scrape_dict = scrape_pdf(directory+file_name+".pdf")
     print scrape_dict
     logging.info(scrape_dict)
-    date = dateparser.parse(scrape_dict['info']['date'])
+    date = datetime.strptime(scrape_dict['info']['date'], '%d/%m/%Y')
     series = re.findall(r'([\w-]*)(th|rd|nd|st)', scrape_dict['info']['series']).pop()[0]
     exists = db.session.query(Lottery.id).filter_by(series=series).scalar() is not None
     if not exists:
         lottery = Lottery(name=scrape_dict['info']['name'], series=series,
-                          date=date.__format__("%d-%m-%Y"), details=scrape_dict['prizes'])
+                          date=date, details=scrape_dict['prizes'])
         db.session.add(lottery)
         try:
             db.session.commit()

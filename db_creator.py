@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.ext.declarative import declarative_base
 
 from magicJSON import MagicJSON
@@ -10,7 +10,7 @@ Base = declarative_base()
 class Lottery(Base):
     __tablename__ = 'lotteries'
     id = Column(Integer, primary_key = True)
-    date = Column(String)
+    date = Column(Date)
     name = Column(String)
     series = Column(String)
     details = Column(MagicJSON)
