@@ -56,7 +56,7 @@ def paginate():
     #print request.form
     result_dict = []
     for q in query.items:
-        result_dict.append([q.date, q.name, q.series, q.id])
+        result_dict.append([q.date.strftime('%a, %d/%m/%Y'), q.name, q.series, q.id])
     data = {'draw': int(request.form['draw']),
             'recordsTotal': total_count,
             'recordsFiltered': filtered_count,
