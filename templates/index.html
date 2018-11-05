@@ -37,7 +37,9 @@ $( document ).ready(function() {
         "type": 'POST',
             },
         "columns": [{ "data": 0},{ "data": 1 },{ "data": 2},
-                    {render: function ( data, type, row ) {return '<a class="results btn btn-primary" role="button"  href="/result/'+data+'" target="_blank" value="'+data+'">View Result</a>';}}]
+                    {render: function ( data, type, row ) {return '<a class="results btn btn-primary" role="button"  href="/result/'+data+'" target="_blank" value="'+data+'">View Result</a>';}}],
+        "columnDefs": [{ orderable: false, targets: [2, 3] }
+]
 
     } );
     $(".toolbar").html('<div class="row col-md-6"><input type="buttons" class="datePicker col-sm-6 margin10"></input><button type="button" id="clearDate" class="btn btn-primary col-sm-2">Clear</button></div>');
