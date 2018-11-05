@@ -1,4 +1,4 @@
-import urllib2
+import requests
 from bs4 import BeautifulSoup
 import re
 from download import download_file
@@ -12,9 +12,9 @@ import logging
 logging.info("[start script]")
 page_url = "http://103.251.43.52/lottery/weblotteryresult.php"
 
-page = urllib2.urlopen(page_url)
+page = requests.get(page_url)
 
-soup = BeautifulSoup(page,'html.parser')
+soup = BeautifulSoup(page.content,'html.parser')
 
 links = soup.findAll('a', attrs={'href': re.compile("^javascript:")})
 

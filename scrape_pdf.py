@@ -5,7 +5,6 @@ import os
 
 def scrape_pdf(name):
     os.chdir(os.path.dirname(__file__))
-    print name
     pdf_file = open(name, 'rb')
     read_pdf = PyPDF2.PdfFileReader(pdf_file)
     number_of_pages = read_pdf.getNumPages()
@@ -19,7 +18,7 @@ def scrape_pdf(name):
     prizes = {}
 
     headings = re.findall(
-        r'[a-zA-Z0-9!@#$&()\\-`.+,/\"]*2301740([\w\s-]*)NO.([\w\s-]*)[st,nd,rd,th ]*DRAW held on ([\d\/]*) AT ([\w\s,]*)1st', text)
+        r'[a-zA-Z0-9!@#$&()\\-`.+,/\"]*2301740([\w\s-]*)LOTTERY NO.([\w\s-]*)[st,nd,rd,th ]*DRAW held on ([\d\/]*) AT ([\w\s,]*)1st', text)
     first = re.findall(r'[a-zA-Z0-9!@#$&()\\-`.+,/\"]*1st Prize[-\s]*Rs[.:\s]*([\d,]*)/-([\w\s\(\)]*)Consolation Prize',
                        text)
     prizes.update({"first": {"prize_money": first[0][0], "prizes": first[0][1]}})

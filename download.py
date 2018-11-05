@@ -32,7 +32,7 @@ def download_file(file_name):
         # to a new file in binary mode.
         f.write(r.content)
     scrape_dict = scrape_pdf(directory+file_name+".pdf")
-    print scrape_dict
+    print(scrape_dict)
     logging.info(scrape_dict)
     date = datetime.strptime(scrape_dict['info']['date'], '%d/%m/%Y')
     series = re.findall(r'([\w-]*)(th|rd|nd|st)', scrape_dict['info']['series']).pop()[0]
