@@ -42,9 +42,9 @@ $( document ).ready(function() {
 ]
 
     } );
-    $(".toolbar").html('<div class="row col-md-6"><input type="buttons" class="datePicker col-sm-6 margin10"></input><button type="button" id="clearDate" class="btn btn-primary col-sm-2">Clear</button></div>');
+    $(".toolbar").html('<div class="row col-md-6"><input type="buttons" class="datePicker col-sm-6 margin10" readonly></input><button type="button" id="clearDate" class="btn btn-primary col-sm-2">Clear</button></div>');
     $('.datePicker').datepicker({
-            format: 'dd-mm-yyyy',
+            format: 'dd/mm/yyyy',
         });
     $('.datePicker').datepicker().on('changeDate clearDate', function(e) {
             console.log("triggered");
