@@ -39,7 +39,6 @@ def result(lottery_id):
         return render_template('404.html')
     return render_template('result_view.html', lottery=query.first())
 
-
 @app.route('/page', methods = ['GET', 'POST'])
 def paginate():
     search_value = request.form['search[value]']
@@ -91,10 +90,9 @@ def not_found(error):
     return render_template('404.html'), 404
 
 @app.errorhandler(500)
-def not_found(error):
-    return render_template('500.html'), 500
-
+def processing_error(error):
+    return render_template('500.html', error=error), 500
 
 if __name__ == '__main__':
     port = 8080
-    app.run(host= '0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port)
