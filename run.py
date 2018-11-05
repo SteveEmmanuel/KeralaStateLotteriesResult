@@ -16,6 +16,8 @@ def run():
 @app.route('/result/<lottery_id>')
 def result(lottery_id):
     query = db.session.query(Lottery).filter(Lottery.id.__eq__(lottery_id))
+    if query.count() == 0:
+        return render_template('404.html')
     return render_template('result_view.html', lottery=query.first())
 
 
