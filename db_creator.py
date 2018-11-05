@@ -15,8 +15,6 @@ class Lottery(Base):
     series = Column(String)
     details = Column(MagicJSON)
 
-
-
     def __init__(self, date, name, series, details):
         """"""
         self.date = date
