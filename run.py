@@ -5,7 +5,26 @@ from flask import render_template, request
 import socket
 from db_creator import Lottery
 from sqlalchemy import or_
+from datetime import datetime
+import flask_admin
+from flask_admin.contrib.sqla import ModelView
+from LotteryForm import LotteryForm
 
+class LotteryModelView(ModelView):
+    form_base_class = LotteryForm
+    form_widget_args = {
+        'details': {
+            'height': "50px",
+            'style': 'color: black'
+        }
+    }
+
+
+# set optional bootswatch theme
+app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
+
+admin = flask_admin.Admin(app, name='Admin')
+admin.add_view( LotteryModelView(Lottery, db.session, name='User') )
 
 init_db()
 
@@ -29,9 +48,9 @@ def paginate():
     total_count = query.count()
 
     if 'date' in request.form:
-        date = request.form['date']
-        if date.__len__() != 0:
-            query = query.filter(Lottery.date.like(date))
+        if request.form['date'].__len__() != 0:
+            date = datetime.strptime(request.form['date'], '%d/%m/%Y')
+            query = query.filter(Lottery.date == date.date())
 
     if search_value.__len__() != 0:
         query = query.filter(or_(Lottery.name.contains(search_value),
@@ -77,11 +96,5 @@ def not_found(error):
 
 
 if __name__ == '__main__':
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.bind(('localhost', 0))
     port = 8080
-    sock.close()
-    app.run(port=port)
-
-if __name__ == '__main__':
-    app.run()
+    app.run(host= '0.0.0.0', port=port)
