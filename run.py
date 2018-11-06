@@ -10,6 +10,13 @@ from flask_admin.contrib.sqla import ModelView
 from Forms import LotteryForm, LoginForm
 from flask_login import login_required, login_user, logout_user, current_user
 
+'''import logging
+logging.basicConfig(
+    filename="/home/steveisredatw/tasks.log",
+    level=logging.DEBUG
+)
+logging.info("At the starting line")'''
+
 class LotteryModelView(ModelView):
     form_base_class = LotteryForm
 
@@ -102,13 +109,13 @@ def user_loader(user_id):
     :param unicode user_id: user_id (email) user to retrieve
 
     """
-    return User.query.get(user_id)
+    return db.session.query(User).filter(User.id.__eq__(user_id))
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter(User.user_id.__eq__(form.user_id.data))
+        user = db.session.query(User).filter(User.user_id.__eq__(form.user_id.data))
         if user.count() == 1:
             user = user.first()
             if bcrypt.check_password_hash(user.password, form.password.data):
