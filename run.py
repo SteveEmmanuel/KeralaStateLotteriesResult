@@ -1,35 +1,46 @@
-from app import app, db
+from app import app, db, bcrypt, login_manager
 import flask
-from db_setup import init_db
-from flask import render_template, request
-import socket
-from db_creator import Lottery
+from flask import render_template, request, url_for, redirect
+from db_creator import Lottery, User
 from sqlalchemy import or_
 from datetime import datetime
 import flask_admin
+import flask_login
 from flask_admin.contrib.sqla import ModelView
-from LotteryForm import LotteryForm
+from Forms import LotteryForm, LoginForm
+from flask_login import login_required, login_user, logout_user, current_user
 
 class LotteryModelView(ModelView):
     form_base_class = LotteryForm
-    form_widget_args = {
-        'details': {
-            'height': "50px",
-            'style': 'color: black'
-        }
-    }
+
+    def render(self, template, **kwargs):
+        """
+        using extra js in render method allow use
+        url_for that itself requires an app context
+        """
+        self.extra_js = [url_for("static", filename="js/flask-admin.js")]
+        self.extra_css = [url_for("static", filename="css/flask-admin.css")]
+
+        return super(LotteryModelView, self).render(template, **kwargs)
+
+
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    def inaccessible_callback(self, name, **kwargs):
+        # redirect to login page if user doesn't have access
+        return redirect(url_for('login', next=request.url))
 
 
 # set optional bootswatch theme
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 admin = flask_admin.Admin(app, name='Admin')
-admin.add_view( LotteryModelView(Lottery, db.session, name='User') )
-
-init_db()
+admin.add_view(LotteryModelView(Lottery, db.session, name='Lotteries'))
 
 @app.route('/')
-def run():
+@app.route('/home')
+def home():
     return render_template('index.html')
 
 @app.route('/result/<lottery_id>')
@@ -84,6 +95,31 @@ def paginate():
 
     return flask.jsonify(data)
 
+@login_manager.user_loader
+def user_loader(user_id):
+    """Given *user_id*, return the associated User object.
+
+    :param unicode user_id: user_id (email) user to retrieve
+
+    """
+    return User.query.get(user_id)
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter(User.user_id.__eq__(form.user_id.data))
+        if user.count() == 1:
+            user = user.first()
+            if bcrypt.check_password_hash(user.password, form.password.data):
+                login_user(user)
+                return redirect(url_for("admin.index"))
+    return render_template("login.html", form=form)
+
+@app.route("/logout", methods=["GET", "POST"])
+def logout():
+    logout_user()
+    return redirect(url_for("login"))
 
 @app.errorhandler(404)
 def not_found(error):

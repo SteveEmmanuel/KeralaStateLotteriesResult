@@ -1,8 +1,11 @@
-from wtforms import fields
-import json
+from wtforms import StringField, PasswordField, TextAreaField
+from wtforms.validators import DataRequired
 from wtforms_alchemy import ModelForm
+from flask_wtf import Form
+import json
 
-class JSONField(fields.StringField):
+
+class JSONField(TextAreaField):
     def _value(self):
         return json.dumps(self.data) if self.data else ''
 
@@ -28,3 +31,7 @@ class LotteryForm(ModelForm):
         only = ['name', 'date', 'series']
     details = JSONField()
 
+class LoginForm(Form):
+    """Form class for user login."""
+    user_id = StringField('User ID', validators=[DataRequired()])
+    password = PasswordField('password', validators=[DataRequired()])
