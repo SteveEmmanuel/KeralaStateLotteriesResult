@@ -109,7 +109,7 @@ def user_loader(user_id):
     :param unicode user_id: user_id (email) user to retrieve
 
     """
-    return db.session.query(User).filter(User.id.__eq__(user_id))
+    return db.session.query(User).filter(User.id.__eq__(user_id)).first()
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
