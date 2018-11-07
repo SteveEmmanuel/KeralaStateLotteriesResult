@@ -4,63 +4,68 @@
 <head>
     <title>Kerala State Lotteries</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="../static/css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-datepicker.standalone.css">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-datepicker.css">
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Kerala State Lotteries Result</a>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIQSURBVGhD7Zi9LgRhFIY3Gp3eDbgFN6AhJAqdRkStxg2I6EQkVBoF4gqIKxAJGp1IFAoaPw0J3ieZLzn5cmZmZ/9md31v8iQz852/N5ndYzWSkpJq12TGQGtafGRwPZBaEt/iN4Nrng2U1sSPCCYCPOOs7zUidkRsIIYYYmOtiBMD9z3XqDgW3uAexJJjtSdsDPc91Zi4FHYI4FXaz/BeNXLIDarVyLi4EXYA4MO9JWYzuLYf/gC51EC1GZkQD8I2h0+xIYKJAM84i+OpQa1ajLDkXoRtDK9iVcQmApwRE+dR6yx61nUjM4IlZ5vCk1gWngELMcTG+V/RfVeNxIsucC8WhTe4B7HkxHUsXTOyLrxvnyuxILyBiyCH3LheoONGihbdhZgX3qDNQC41vNq3wlucLYmlxZb1Gp2KOeENWAVqUMvrQe94cVZW2aLzhmqHZhdnJbGkHkVcFOyi6zTU9noyS1icTStv0QHfNN4AneRaeL3D4mxKeYsuwLvsNe8kh8LrDcxW+oszb9FZ6jYCzMisrvIWXUw/GIHKvziPhC1QhxFmaFv/xsimeG8TatiatRjZFva8FahhayYjRfrXRqZKiOP70gh/epeJGJuTjFRRMlKgZKQdJSMF6gsjb2LXcCfseStGqGFrPgt73hUjZbRipIxkxGpojPBv0vMKHIgyEePl5sEMSUlJSUOjRuMPNRjq65SIclYAAAAASUVORK5CYII=">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE2SURBVGhD7ZkxTgJBGEZXG6204QRW2ngCOy9gYU9HaWtlA4WeQGNl4wUkdF4ESo4A1gLfh7vJZJ0ZQ/7Z7A5+L3nJ7GSZ/C9hScgWQgghhPjNI3zNRM4aZA7XmchZg+xlyDt86picaeeQK250DM6kEAs8Y1Ca6rxWQp5hdR7XVhRi5Q5+lnJtpbWQ1CjESg+elXJtpbUQ/WoFUIgVhQRQiBWFBFCIFYUEUIgVnrEXf3VT879DXuB9xCNY5xr67k0lZ9o55C9PYcUBfIDf0HdvEyYPOYEf0HdPk0ZDYq8V3qB7EEPO4dTZozPo+3xqo68VYnBwd+A+XNT2xtD9ynWSeojrCg7hIew8oZAlvIHZ4Avh83ABs6IeMin3sqMK4fMwglk8Dz4Y8gVvt1cZcwwvf5aiIYpiA4oK9er+HZjCAAAAAElFTkSuQmCC">
+                            Information
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="../static/js/bootstrap-datepicker.js"></script>
     <script src="//cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-</head>
-    <body>
-        <div id="wrapper">
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <div  class="navbar-brand">
-                            <a id="menu-toggle" href="#" class="glyphicon glyphicon-align-justify btn-menu toggle">
-                                <i class="fa fa-bars"></i>
-                            </a>
-                        <div class="row">
-                            <span id="heading"><b>Kerala State Lotteries Results</b></span>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <!-- Sidebar -->
-            <div id="sidebar-wrapper">
-                <nav id="spy">
-                    <ul class="sidebar-nav nav bg-light">
-                        <li class="sidebar-brand">
-                            <a href="/"><span class="fa fa-home solo">Home</span></a>
-                        </li>
-                        <li>
-                            <a href="/info">
-                                <span class="fa fa-anchor solo">Information</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- Page content -->
-            <div id="page-content-wrapper">
-                <div class="page-content">
-                    <div class="container-fluid">
-                        {% block content %}{% endblock %}
-                    </div>
-                </div>
-            </div>
-        </div>
+    <script src="../static/js/bootstrap-datepicker.js"></script>
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+    feather.replace()
+    </script>
+
     </body>
 </html>
 {% block script %}{% endblock %}

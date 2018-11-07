@@ -144,5 +144,35 @@
 }
 
 input[type="search"] {
+    height: 40px;
+    width: 250px;
     margin-bottom: 25px;
+    border: 1px solid #f5e7e7;
+    border-radius: 1px;
+    box-shadow: inset 0 0px 0px rgba(0,0,0,0);
+}
+
+
+#table-view {
+    padding-top: 25px;
+}
+
+#LotteryTab {
+    margin-top: 25px;
+}
+
+#lotteries_filter{
+    margin-top: -40px;
+    margin-bottom: 25px;
+}
+#lotteries_wrapper{
+    margin-top: 40px;
+}
+
+.card{
+    margin-top: 25px;
+}
+
+.bg-primary {
+    background-color: #eff3f7!important;
 }
