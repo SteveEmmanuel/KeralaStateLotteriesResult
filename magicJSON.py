@@ -13,7 +13,7 @@ class StringyJSON(types.TypeDecorator):
         return value
 
     def process_result_value(self, value, dialect):
-        if value is not None:
+        if value is not None and value.__len__() > 0:
             value = json.loads(value)
         return value
 
