@@ -1,7 +1,7 @@
 from app import app, db, bcrypt, login_manager
 import flask
 from flask import render_template, request, url_for, redirect
-from db_creator import Lottery, User
+from app import Lottery, User
 from sqlalchemy import or_
 from datetime import datetime
 import flask_admin

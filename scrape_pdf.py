@@ -25,7 +25,7 @@ def scrape_pdf(name):
 
     consolation = re.findall(r'[a-zA-Z0-9!@#$&()\\-`.+,/\"]*Consolation Prize[-\s]*Rs[.:\s]*([\d,]*)/-([\w\s\(\)]*)2nd',
                              text)
-    prizes.update({"consolation": {"prize_money": consolation[0][0], "prizes": split_by_n(consolation[0][1], 9)}})
+    prizes.update({"asas": {"prize_money": consolation[0][0], "prizes": re.findall(r'([a-zA-Z]*[ ]+[0-9]*)',consolation[0][1])}})
 
     second = re.findall(r'[a-zA-Z0-9!@#$&()\\-`.+,/\"]*2nd Prize[-\s]*Rs[.:\s]*([\d,]*)/-([\w\s\(\)]*)3rd', text)
     position = second[0][1].lower().find("for")

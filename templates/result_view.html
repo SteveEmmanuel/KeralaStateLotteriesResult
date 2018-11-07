@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+<span id="pdf_base_64" value={{lottery['pdf_base_64']}} hidden></span>
 <div class="card">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs pull-right"  id="resultTab" role="tablist">
@@ -149,16 +150,64 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdf-tab">...</div>
+            <div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdf-tab">
+                <canvas id="pdf-canvas"></canvas>
+            </div>
         </div>
     </div>
 </div>
 {% endblock %}
 
 {% block script %}
+<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 <script>
     $( document ).ready(function() {
         console.log( "ready!" );
+        // atob() is used to convert base64 encoded PDF to binary-like data.
+        // (See also https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/
+        // Base64_encoding_and_decoding.)
+
+        var pdfData = $('#pdf_base_64').attr('value').slice(2, -1);
+        pdfData = atob(pdfData);
+        // Loaded via <script> tag, create shortcut to access PDF.js exports.
+        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+        // The workerSrc property shall be specified.
+        pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+        // Using DocumentInitParameters object to load binary data.
+        var loadingTask = pdfjsLib.getDocument({data: pdfData});
+        loadingTask.promise.then(function(pdf) {
+          console.log('PDF loaded');
+
+          // Fetch the first page
+          var pageNumber = 1;
+          pdf.getPage(pageNumber).then(function(page) {
+            console.log('Page loaded');
+
+            var scale = 1.5;
+            var viewport = page.getViewport(scale);
+
+            // Prepare canvas using PDF page dimensions
+            var canvas = document.getElementById('pdf-canvas');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            // Render PDF page into canvas context
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport
+            };
+            var renderTask = page.render(renderContext);
+            renderTask.then(function () {
+              console.log('Page rendered');
+            });
+          });
+        }, function (reason) {
+          // PDF loading error
+          console.error(reason);
+        });
     });
 </script>
 {% endblock %}
