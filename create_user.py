@@ -1,9 +1,7 @@
 from getpass import getpass
 import sys
-
-from flask import current_app
 from app import app, bcrypt, db
-from db_creator import User
+from app import User
 
 def main():
     """Main entry point for script."""
