@@ -5,10 +5,9 @@ from app import Lottery, User
 from sqlalchemy import or_
 from datetime import datetime
 import flask_admin
-import flask_login
 from flask_admin.contrib.sqla import ModelView
 from Forms import LotteryForm, LoginForm
-from flask_login import login_required, login_user, logout_user, current_user
+from flask_login import login_user, logout_user, current_user
 
 '''import logging
 logging.basicConfig(
