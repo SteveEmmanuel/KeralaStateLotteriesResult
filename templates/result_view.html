@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
 <span id="pdf_base_64" value={{lottery['pdf_base_64']}} hidden></span>
-<div class="card">
+<span id="result" value={{lottery['details']['consolation']}} hidden></span>
+<div class="card results">
     <div class="card-header">
         <ul class="nav nav-tabs card-header-tabs pull-right"  id="resultTab" role="tablist">
             <li class="nav-item">
@@ -16,7 +17,7 @@
         <div class="tab-content" id="resultTabContent">
             <div class="tab-pane fade show active" id="text" role="tabpanel" aria-labelledby="text-tab">
 
-                <div class="prizes card text-dark bg-primary border-primary">
+                <div class="prizes card text-dark bg-primary-light border-primary">
                     <div class="card-header">
                         <h4 class="card-title">{{lottery['name']}} , {{lottery['series']}} draw held on {{lottery['date']}}</h4>
                     </div>
@@ -26,8 +27,10 @@
                             <div class="card-header">
                                 <h3 class="card-title">First Prize - Rs. {{lottery['details']['first']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
-                            {{lottery['details']['first']['prizes']}}
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['first']['prizes'] %}
+                                    <span class="col">{{prize}}</span>
+                                {% endfor %}
                             </div>
                         </div>
                         {% endif %}
@@ -36,9 +39,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">Consolation Prize - Rs. {{lottery['details']['consolation']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                             {% for prize in lottery['details']['consolation']['prizes'] %}
-                                <span class="col-md-3">{{prize}}</span>
+                                <span class="col">{{prize}}</span>
                             {% endfor %}
                             </div>
                         </div>
@@ -48,8 +51,10 @@
                             <div class="card-header">
                                 <h3 class="card-title">Second Prize - Rs. {{lottery['details']['second']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
-                            {{lottery['details']['second']['prizes']}}
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['second']['prizes'] %}
+                                    <span class="col">{{prize}}</span>
+                                {% endfor %}
                             </div>
                         </div>
                         {% endif %}
@@ -58,8 +63,10 @@
                             <div class="card-header">
                                 <h3 class="card-title">Third Prize - Rs. {{lottery['details']['third']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
-                            {{lottery['details']['third']['prizes']}}
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['third']['prizes'] %}
+                                    <span class="col">{{prize}}</span>
+                                {% endfor %}
                             </div>
                         </div>
                         {% endif %}
@@ -68,9 +75,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">Fourth Prize - Rs. {{lottery['details']['fourth']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                             {% for prize in lottery['details']['fourth']['prizes'] %}
-                                <span class="col-md-3">{{prize}}</span>
+                                <span class="col">{{prize}}</span>
                             {% endfor %}
                             </div>
                         </div>
@@ -80,9 +87,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">Fifth Prize - Rs. {{lottery['details']['fifth']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                             {% for prize in lottery['details']['fifth']['prizes'] %}
-                                <span class="col-md-3">{{prize}}</span>
+                                <span class="col">{{prize}}</span>
                             {% endfor %}
                             </div>
                         </div>
@@ -92,9 +99,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">Sixth Prize - Rs. {{lottery['details']['sixth']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                             {% for prize in lottery['details']['sixth']['prizes'] %}
-                                <span class="col-md-3">{{prize}}</span>
+                                <span class="col">{{prize}}</span>
                             {% endfor %}
                             </div>
                         </div>
@@ -104,9 +111,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">Seventh Prize - Rs. {{lottery['details']['seventh']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                             {% for prize in lottery['details']['seventh']['prizes'] %}
-                                <span class="col-md-3">{{prize}}</span>
+                                <span class="col">{{prize}}</span>
                             {% endfor %}
                             </div>
                         </div>
@@ -116,9 +123,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">Eighth Prize - Rs. {{lottery['details']['eighth']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                             {% for prize in lottery['details']['eighth']['prizes'] %}
-                                <span class="col-md-3">{{prize}}</span>
+                                <span class="col">{{prize}}</span>
                             {% endfor %}
                             </div>
                         </div>
@@ -128,9 +135,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">Ninth Prize - Rs. {{lottery['details']['ninth']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                             {% for prize in lottery['details']['ninth']['prizes'] %}
-                                <span class="col-md-3">{{prize}}</span>
+                                <span class="col">{{prize}}</span>
                             {% endfor %}
                             </div>
                         </div>
@@ -140,9 +147,9 @@
                             <div class="card-header">
                                 <h3 class="card-title">Tenth Prize - Rs. {{lottery['details']['tenth']['prize_money']}}</h3>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body row">
                             {% for prize in lottery['details']['tenth']['prizes'] %}
-                                <span class="col-md-3">{{prize}}</span>
+                                <span class="col">{{prize}}</span>
                             {% endfor %}
                             </div>
                         </div>
@@ -152,7 +159,28 @@
             </div>
             <div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdf-tab">
                 <a id="urlToSource" href={{lottery['url']}} target="_blank" > Click here to go to Kerala Lotteries website.</a>
-                <canvas id="pdf-canvas"></canvas>
+                <div class="card pdf" id="cardPdf">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs pull-right"  id="pdfTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="page-1-tab" data-toggle="tab" href="#page-1" role="tab" aria-controls="home" aria-selected="true">Page 1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="page-2-tab" data-toggle="tab" href="#page-2" role="tab" aria-controls="profile" aria-selected="false">Page 2</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content align-content-center" id="pdfTabContent">
+                            <div class="tab-pane fade show active" id="page-1" role="tabpanel" aria-labelledby="page-1-tab">
+                                <canvas id="page-1-canvas"></canvas>
+                            </div>
+                            <div class="tab-pane fade" id="page-2" role="tabpanel" aria-labelledby="page-2-tab">
+                                <canvas id="page-2-canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -164,51 +192,62 @@
 <script>
     $( document ).ready(function() {
         console.log( "ready!" );
-        // atob() is used to convert base64 encoded PDF to binary-like data.
-        // (See also https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/
-        // Base64_encoding_and_decoding.)
+        var isMobile = window.matchMedia("only screen and (max-width: 760px)");
 
-        var pdfData = $('#pdf_base_64').attr('value').slice(2, -1);
-        pdfData = atob(pdfData);
-        // Loaded via <script> tag, create shortcut to access PDF.js exports.
-        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+        if(!isMobile.matches ? true : false){
+            // atob() is used to convert base64 encoded PDF to binary-like data.
+            // (See also https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/
+            // Base64_encoding_and_decoding.)
 
-        // The workerSrc property shall be specified.
-        pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+            var pdfData = $('#pdf_base_64').attr('value').slice(2, -1);
+            pdfData = atob(pdfData);
+            // Loaded via <script> tag, create shortcut to access PDF.js exports.
+            var pdfjsLib = window['pdfjs-dist/build/pdf'];
 
-        // Using DocumentInitParameters object to load binary data.
-        var loadingTask = pdfjsLib.getDocument({data: pdfData});
-        loadingTask.promise.then(function(pdf) {
-          console.log('PDF loaded');
+            // The workerSrc property shall be specified.
+            pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
 
-          // Fetch the first page
-          var pageNumber = 1;
-          pdf.getPage(pageNumber).then(function(page) {
-            console.log('Page loaded');
+            // Using DocumentInitParameters object to load binary data.
+            var loadingTask = pdfjsLib.getDocument({data: pdfData});
+            loadingTask.promise.then(function(pdf) {
+                console.log('PDF loaded');
 
-            var scale = 1.5;
-            var viewport = page.getViewport(scale);
+                function renderByPage(pageNumber){
+                    pdf.getPage(pageNumber).then(function(page) {
+                        console.log('Page loaded');
 
-            // Prepare canvas using PDF page dimensions
-            var canvas = document.getElementById('pdf-canvas');
-            var context = canvas.getContext('2d');
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-
-            // Render PDF page into canvas context
-            var renderContext = {
-              canvasContext: context,
-              viewport: viewport
-            };
-            var renderTask = page.render(renderContext);
-            renderTask.then(function () {
-              console.log('Page rendered');
+                        var scale = 1.5;
+                        var viewport = page.getViewport(scale);
+                        // Prepare canvas using PDF page dimensions
+                        var canvasId = 'page-'+pageNumber+'-canvas';
+                        var canvas = document.getElementById(canvasId);
+                        var context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        // Render PDF page into canvas context
+                        var renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+                        var renderTask = page.render(renderContext);
+                            renderTask.then(function () {
+                            console.log('Page rendered');
+                            });
+                    });
+                }
+                // Fetch pages
+                for(pageNumber=1; pageNumber<3; pageNumber++){
+                    renderByPage(pageNumber);
+                }
+            }, function (reason) {
+              // PDF loading error
+              console.error(reason);
             });
-          });
-        }, function (reason) {
-          // PDF loading error
-          console.error(reason);
-        });
+        }
+        else{
+            $('#cardPdf').hide();
+        }
     });
 </script>
 {% endblock %}
+

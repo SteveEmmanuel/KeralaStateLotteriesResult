@@ -3,50 +3,138 @@
 <html lang="en">
 <head>
     <title>Kerala State Lotteries</title>
+    <link rel="icon" type="image/png" href="../static/images/logo.png">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="../../../../favicon.ico">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
-    <link href="../static/css/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-datepicker.standalone.css">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+
 </head>
 <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Kerala State Lotteries Result</a>
-    </nav>
-    <div class="container-fluid">
-        <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIQSURBVGhD7Zi9LgRhFIY3Gp3eDbgFN6AhJAqdRkStxg2I6EQkVBoF4gqIKxAJGp1IFAoaPw0J3ieZLzn5cmZmZ/9md31v8iQz852/N5ndYzWSkpJq12TGQGtafGRwPZBaEt/iN4Nrng2U1sSPCCYCPOOs7zUidkRsIIYYYmOtiBMD9z3XqDgW3uAexJJjtSdsDPc91Zi4FHYI4FXaz/BeNXLIDarVyLi4EXYA4MO9JWYzuLYf/gC51EC1GZkQD8I2h0+xIYKJAM84i+OpQa1ajLDkXoRtDK9iVcQmApwRE+dR6yx61nUjM4IlZ5vCk1gWngELMcTG+V/RfVeNxIsucC8WhTe4B7HkxHUsXTOyLrxvnyuxILyBiyCH3LheoONGihbdhZgX3qDNQC41vNq3wlucLYmlxZb1Gp2KOeENWAVqUMvrQe94cVZW2aLzhmqHZhdnJbGkHkVcFOyi6zTU9noyS1icTStv0QHfNN4AneRaeL3D4mxKeYsuwLvsNe8kh8LrDcxW+oszb9FZ6jYCzMisrvIWXUw/GIHKvziPhC1QhxFmaFv/xsimeG8TatiatRjZFva8FahhayYjRfrXRqZKiOP70gh/epeJGJuTjFRRMlKgZKQdJSMF6gsjb2LXcCfseStGqGFrPgt73hUjZbRipIxkxGpojPBv0vMKHIgyEePl5sEMSUlJSUOjRuMPNRjq65SIclYAAAAASUVORK5CYII=">
-                            Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAE2SURBVGhD7ZkxTgJBGEZXG6204QRW2ngCOy9gYU9HaWtlA4WeQGNl4wUkdF4ESo4A1gLfh7vJZJ0ZQ/7Z7A5+L3nJ7GSZ/C9hScgWQgghhPjNI3zNRM4aZA7XmchZg+xlyDt86picaeeQK250DM6kEAs8Y1Ca6rxWQp5hdR7XVhRi5Q5+lnJtpbWQ1CjESg+elXJtpbUQ/WoFUIgVhQRQiBWFBFCIFYUEUIgVnrEXf3VT879DXuB9xCNY5xr67k0lZ9o55C9PYcUBfIDf0HdvEyYPOYEf0HdPk0ZDYq8V3qB7EEPO4dTZozPo+3xqo68VYnBwd+A+XNT2xtD9ynWSeojrCg7hIew8oZAlvIHZ4Avh83ABs6IeMin3sqMK4fMwglk8Dz4Y8gVvt1cZcwwvf5aiIYpiA4oK9er+HZjCAAAAAElFTkSuQmCC">
-                            Information
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            </nav>
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                {% block content %}{% endblock %}
-            </main>
-        </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+
+  <!-- Bootstrap NavBar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark  fixed-top">
+    <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+        <img src="../static/images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <span class="menu-collapsed">Kerala State Lotteries Result</span>
+    </a>
+    <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
+        <ul class="navbar-nav">
+
+            <!-- This menu is hidden in bigger devices with d-sm-none.
+           The sidebar isn't proper for smaller screens imo, so this dropdown menu can keep all the useful sidebar itens exclusively for smaller screens  -->
+            <li class="nav-item dropdown d-sm-block d-md-none">
+                    <a class="dropdown-item" href="#">Home</a>
+                    <a class="dropdown-item" href="#">Info</a>
+            </li>
+            <!-- Smaller devices menu END -->
+
+        </ul>
+    </div>
+</nav>
+<!-- NavBar END -->
+
+
+<!-- Bootstrap row -->
+<div class="row" id="body-row">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block col-2">
+        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        <!-- Bootstrap List Group -->
+        <ul class="list-group sticky-top sticky-offset">
+            <!-- Separator with title -->
+            <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                <small>MENU</small>
+            </li>
+            <!-- /END Separator -->
+            <a href="#" class="bg-dark list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class="mr-3"></span>
+                    <span class="menu-collapsed">Home</span>
+                </div>
+            </a>
+
+            <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start collapsed">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span class=" mr-3"></span>
+                    <span class="menu-collapsed">Info</span>
+                    <span class="fa fa-caret-down ml-auto"></span>
+                </div>
+            </a>
+            <!-- Submenu content -->
+            <div id="submenu1" class="collapse sidebar-submenu">
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Claiming Prizes</span>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                    <span class="menu-collapsed">Disclaimer</span>
+                </a>
+            </div>
+
+        </ul>
+        <!-- List Group END-->
+    </div>
+    <!-- sidebar-container END -->
+
+    <!-- MAIN -->
+    <div class="col py-3">
+
+{% block content %}{% endblock %}
+    </div>
+    <!-- Main Col END -->
+
+</div>
+<!-- body-row END -->
+
+  <script>
+    // sandbox disable popups
+    if (window.self !== window.top && window.name!="view1") {;
+      window.alert = function(){/*disable alert*/};
+      window.confirm = function(){/*disable confirm*/};
+      window.prompt = function(){/*disable prompt*/};
+      window.open = function(){/*disable open*/};
+    }
+
+    // prevent href=# click jump
+    document.addEventListener("DOMContentLoaded", function() {
+      var links = document.getElementsByTagName("A");
+      for(var i=0; i < links.length; i++) {
+        if(links[i].href.indexOf('#')!=-1) {
+          links[i].addEventListener("click", function(e) {
+          console.debug("prevent href=# click");
+              if (this.hash) {
+                if (this.hash=="#") {
+                  e.preventDefault();
+                  return false;
+                }
+                else {
+                  /*
+                  var el = document.getElementById(this.hash.replace(/#/, ""));
+                  if (el) {
+                    el.scrollIntoView(true);
+                  }
+                  */
+                }
+              }
+              return false;
+          })
+        }
+      }
+    }, false);
+  </script>
+
+  <!--scripts loaded here-->
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
@@ -62,10 +150,40 @@
     <script src="../static/js/bootstrap-datepicker.js"></script>
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-    feather.replace()
-    </script>
+    <script src="//cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
 
-    </body>
-</html>
+
+  <script>
+  // Hide submenus
+$('#body-row .collapse').collapse('hide');
+
+// Collapse/Expand icon
+$('#collapse-icon').addClass('fa-angle-double-left');
+
+// Collapse click
+$('[data-toggle=sidebar-colapse]').click(function() {
+    SidebarCollapse();
+});
+
+function SidebarCollapse () {
+    $('.menu-collapsed').toggleClass('d-none');
+    $('.sidebar-submenu').toggleClass('d-none');
+    $('.submenu-icon').toggleClass('d-none');
+    $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
+
+    // Treating d-flex/d-none on separators with title
+    var SeparatorTitle = $('.sidebar-separator-title');
+    if ( SeparatorTitle.hasClass('d-flex') ) {
+        SeparatorTitle.removeClass('d-flex');
+    } else {
+        SeparatorTitle.addClass('d-flex');
+    }
+
+    // Collapse/Expand icon
+    $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
+}
+  </script>
+
+
 {% block script %}{% endblock %}
+</body></html>
