@@ -86,12 +86,12 @@
     margin-top: 25px;
 }
 
-font-bold, card-header {
+font-bold, .card-header {
     font-family: 'Open Sans', sans-serif;
     font-weight: 600;
 }
 
-font-medium, card-body {
+font-medium, .card-body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
@@ -117,3 +117,6 @@ body {
     background-color: #f4f9ff!important;
 }
 
+.dropdown-menu {
+    padding: 0;
+}
