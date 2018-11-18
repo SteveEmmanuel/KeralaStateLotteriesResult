@@ -1,12 +1,12 @@
 from app import app, db, bcrypt, login_manager
 import flask
-from flask import render_template, request, url_for, redirect
-from app import Lottery, User
+from flask import render_template, request, url_for, redirect, flash
+from app import Lottery, User, FeedBack
 from sqlalchemy import or_
 from datetime import datetime
 import flask_admin
 from flask_admin.contrib.sqla import ModelView
-from Forms import LotteryForm, LoginForm
+from Forms import LotteryForm, LoginForm, FeedBackForm
 from flask_login import login_user, logout_user, current_user
 
 '''import logging
@@ -37,17 +37,50 @@ class LotteryModelView(ModelView):
         # redirect to login page if user doesn't have access
         return redirect(url_for('login', next=request.url))
 
+class FeedbackModelView(ModelView):
+    form_base_class = FeedBackForm
+
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    def inaccessible_callback(self, name, **kwargs):
+        # redirect to login page if user doesn't have access
+        return redirect(url_for('login', next=request.url))
+
 
 # set optional bootswatch theme
 app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
 
 admin = flask_admin.Admin(app, name='Admin')
 admin.add_view(LotteryModelView(Lottery, db.session, name='Lotteries'))
+admin.add_view(FeedbackModelView(FeedBack, db.session, name='Feedback'))
 
 @app.route('/')
 @app.route('/home')
 def home():
     return render_template('index.html')
+
+@app.route('/prize-claim')
+def prize_claim():
+    return render_template('prize_claim.html')
+
+@app.route('/disclaimer')
+def disclaimer():
+    return render_template('disclaimer.html')
+
+@app.route('/feedback', methods=['GET', 'POST'])
+def feedback():
+    form = FeedBackForm()
+    if form.validate_on_submit():
+        feeback = FeedBack()
+        feeback.name = form.name.data
+        feeback.email = form.email.data
+        feeback.comment = form.comment.data
+        db.session.add(feeback)
+        db.session.commit()
+        form = FeedBackForm()
+        flash('You were successfully logged in', 'success')
+    return render_template('feedback.html', form=form, submission_successful=False)
 
 @app.route('/result/<lottery_id>')
 def result(lottery_id):

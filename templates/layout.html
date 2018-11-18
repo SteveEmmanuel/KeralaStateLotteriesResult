@@ -29,16 +29,25 @@
         <span class="menu-collapsed">Kerala State Lotteries Result</span>
     </a>
     <div class="navbar-collapse collapse" id="navbarNavDropdown" style="">
-        <ul class="navbar-nav">
 
+        <ul class="navbar-nav">
             <!-- This menu is hidden in bigger devices with d-sm-none.
            The sidebar isn't proper for smaller screens imo, so this dropdown menu can keep all the useful sidebar itens exclusively for smaller screens  -->
             <li class="nav-item dropdown d-sm-block d-md-none">
-                    <a class="dropdown-item" href="#">Home</a>
-                    <a class="dropdown-item" href="#">Info</a>
+                <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Info
+                </a>
+                <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+                    <a href="/prize-claim" class="list-group-item list-group-item-action bg-dark text-white">
+                        <span class="menu-collapsed">Claiming Prizes</span>
+                    </a>
+                    <a href="/disclaimer" class="list-group-item list-group-item-action bg-dark text-white">
+                        <span class="menu-collapsed">Disclaimer</span>
+                    </a>
+                </div>
             </li>
             <!-- Smaller devices menu END -->
-
         </ul>
     </div>
 </nav>
@@ -57,7 +66,7 @@
                 <small>MENU</small>
             </li>
             <!-- /END Separator -->
-            <a href="#" class="bg-dark list-group-item list-group-item-action">
+            <a href="/home" class="bg-dark list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-start align-items-center">
                     <span class="mr-3"></span>
                     <span class="menu-collapsed">Home</span>
@@ -69,14 +78,15 @@
                     <span class=" mr-3"></span>
                     <span class="menu-collapsed">Info</span>
                     <span class="fa fa-caret-down ml-auto"></span>
+
                 </div>
             </a>
             <!-- Submenu content -->
             <div id="submenu1" class="collapse sidebar-submenu">
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                <a href="/prize-claim" class="list-group-item list-group-item-action bg-dark text-white">
                     <span class="menu-collapsed">Claiming Prizes</span>
                 </a>
-                <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                <a href="/disclaimer" class="list-group-item list-group-item-action bg-dark text-white">
                     <span class="menu-collapsed">Disclaimer</span>
                 </a>
             </div>

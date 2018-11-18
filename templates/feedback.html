@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Enter Feedback</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}:
+            {{ form.name(class="form-control") }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}:
+            {{ form.email(class="form-control")}}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.comment.label }}:
+            {{ form.comment(class="form-control") }}
+            {% for error in form.comment.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.recaptcha(class="form-control") }}
+            {% for error in form.recaptcha.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(class="btn btn-primary") }}</p>
+        <br><br>
+        {% with message = get_flashed_messages(category_filter=["success"]) %}
+            {% if message %}
+            <div class="alert-message block-message error">
+              <a class="close" href="#">×</a>
+              <ul>
+                {%- for msg in message %}
+                <span class="text-success">{{ msg }}</span>
+                {% endfor -%}
+              </ul>
+            </div>
+            {% endif %}
+        {% endwith %}
+        {% if submission_successful %}
+
+        {% endif %}
+        <p></p>
+    </form>
+{% endblock %}
+
+{% block script %}
+<script>
+$( document ).ready(function() {
+    console.log( "ready!" );
+});
+
+</script>
+{% endblock %}
+
+

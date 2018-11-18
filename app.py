@@ -10,11 +10,22 @@ from magicJSON import MagicJSON
 from flask_login import UserMixin
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lotteries.db'
-app.secret_key = "thisisthepasswordforkeralastate"
 
+RC_SITE_KEY = '6LdOi3sUAAAAAFkub2HZHjTix7TcGhLLkWWNwMHq'
+RC_SECRET_KEY = '6LdOi3sUAAAAANvtpVT1y6W-8QoqSchT02HTUx9F'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+SQLALCHEMY_DATABASE_URI = 'sqlite:///lotteries.db'
+SECRET_KEY = 'kLRJ7gT64FWASZmwOOJPrFAlUrWFzHCi'
+
+class Config(object):
+    SECRET_KEY = SECRET_KEY
+    RECAPTCHA_PUBLIC_KEY = RC_SITE_KEY
+    RECAPTCHA_PRIVATE_KEY = RC_SECRET_KEY
+    SQLALCHEMY_TRACK_MODIFICATIONS = SQLALCHEMY_TRACK_MODIFICATIONS
+    SQLALCHEMY_DATABASE_URI =SQLALCHEMY_DATABASE_URI
+
+app = Flask(__name__)
+app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -66,6 +77,12 @@ class User(UserMixin, db.Model):
     # Required for administrative interface
     def __unicode__(self):
         return self.user_id
+
+class FeedBack(db.Model):
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    email = Column(String)
+    comment = Column(String)
 
 # create tables
 Base.metadata.create_all(engine)
