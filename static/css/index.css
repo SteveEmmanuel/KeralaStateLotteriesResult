@@ -1,44 +1,4 @@
-#table-view {
-    padding-top: 25px;
-}
-
-#LotteryTab {
-    margin-top: 25px;
-}
-
-#lotteries_wrapper{
-    margin-top: 40px;
-}
-
-.card{
-    margin-top: 25px;
-}
-
-body,head {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-}
-
-.fa{
-    font-size: 30px;
-}
-
-.fa-clickable {
-    cursor:pointer;
-    outline:none;
-}
-
-body {
-    padding-top: 56px;
-}
-
-.toolbar {
-    float: left;
-}
-
-.bg-primary-light {
-    background-color: #f4f9ff!important;
-}
+/* Styling for Base Template */
 
 .sticky-offset {
     top: 56px;
@@ -106,5 +66,54 @@ body {
   display: inline;
   text-align: right;
   padding-left: 10px;
+}
+
+/* Styling for the rest of the templates */
+
+#table-view {
+    padding-top: 25px;
+}
+
+#LotteryTab {
+    margin-top: 25px;
+}
+
+#lotteries_wrapper{
+    margin-top: 40px;
+}
+
+.card{
+    margin-top: 25px;
+}
+
+font-bold, card-header {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+font-medium, card-body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.fa{
+    font-size: 30px;
+}
+
+.fa-clickable {
+    cursor:pointer;
+    outline:none;
+}
+
+body {
+    padding-top: 56px;
+}
+
+.toolbar {
+    float: left;
+}
+
+.bg-primary-light {
+    background-color: #f4f9ff!important;
 }
 
