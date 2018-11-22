@@ -11,8 +11,8 @@ from flask_login import UserMixin
 from sqlalchemy.orm import scoped_session, sessionmaker
 
 
-RC_SITE_KEY = '6LenhHsUAAAAAC8hJyyCjBoDhaaA97fmKHiYioc7'
-RC_SECRET_KEY = '6LenhHsUAAAAADem-mPD1RUE7sX4VrImNnCZLr2U'
+RC_SITE_KEY = '6LdKYnwUAAAAANaFrlhE78bfFmJl2F-ZEPYeaVyh'
+RC_SECRET_KEY = '6LdKYnwUAAAAACt5cz4Qne0eYkJvYNYlmBm97fzI'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_DATABASE_URI = 'sqlite:///lotteries.db'
 SECRET_KEY = 'kLRJ7gT64FWASZmwOOJPrFAlUrWFzHCi'
