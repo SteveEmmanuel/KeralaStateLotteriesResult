@@ -1,6 +1,6 @@
 from app import app, db, bcrypt, login_manager
 import flask
-from flask import render_template, request, url_for, redirect, flash
+from flask import render_template, request, url_for, redirect, flash, send_from_directory
 from app import Lottery, User, FeedBack
 from sqlalchemy import or_
 from datetime import datetime
@@ -8,6 +8,7 @@ import flask_admin
 from flask_admin.contrib.sqla import ModelView
 from Forms import LotteryForm, LoginForm, FeedBackForm
 from flask_login import login_user, logout_user, current_user
+import os
 
 '''import logging
 logging.basicConfig(
@@ -167,6 +168,16 @@ def not_found(error):
 @app.errorhandler(500)
 def processing_error(error):
     return render_template('500.html', error=error), 500
+
+DOCS_ROOT = os.path.join(app.static_folder, 'sitemap')
+
+@app.route("/robots.txt", methods=["GET", "POST"])
+def robots():
+    return send_from_directory(directory=DOCS_ROOT, filename='robots.txt', as_attachment=True)
+
+@app.route('/sitemap/<path:filename>', methods=["GET", "POST"])
+def send_docs(filename):
+    return send_from_directory(directory=DOCS_ROOT, filename=filename, as_attachment=True)
 
 if __name__ == '__main__':
     port = 8080
