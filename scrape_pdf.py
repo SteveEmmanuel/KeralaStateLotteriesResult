@@ -101,6 +101,8 @@ def split_prize_number(prizes_string):
         split_prizes_list = re.findall(r'([a-zA-Z]*[0-9]*\(+[a-zA-Z]*\)+)', prizes_string)
     elif re.search('[a-zA-Z]', prizes_string) is not None:
         split_prizes_list = re.findall(r'([a-zA-Z]*[0-9]*)', prizes_string)
-    else:
+    elif prizes_string.__len__() % 4 == 0:
         split_prizes_list = split_by_n(prizes_string, 4)
+    elif prizes_string.__len__() % 5 == 0:
+        split_prizes_list = split_by_n(prizes_string, 5)
     return split_prizes_list
