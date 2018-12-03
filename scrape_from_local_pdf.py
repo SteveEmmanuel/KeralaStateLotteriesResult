@@ -22,8 +22,6 @@ def download_file(file_name):
     date = datetime.strptime(scrape_dict['info']['date'], '%d/%m/%Y')
     series = re.findall(r'([\w-]*)(th|rd|nd|st)', scrape_dict['info']['series']).pop()[0]
 
-    db.session.rollback()
-
     query = db.session.query(Lottery).filter_by(series=series)
     exists = bool(query.count())
     url = base_url+filename
