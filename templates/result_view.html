@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
+
+{% block title %}
+<title>{{lottery['name']}} , {{lottery['series']}} - Kerala State Lottery Result</title>
+{% endblock %}
+
 {% block content %}
 <span id="pdf_base_64" value={{lottery['pdf_base_64']}} hidden></span>
 <span id="result" value={{lottery['details']['consolation']}} hidden></span>
