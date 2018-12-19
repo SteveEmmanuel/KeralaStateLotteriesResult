@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <title>{{lottery['name']}} , {{lottery['series']}} - Kerala State Lottery Result</title>
+    <link rel="icon" type="image/png" href="../static/images/logo.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no">
+    <meta name="description"
+          content="Find the draw/results for your Lottery ticket for the Kerala State Lotteries. Also find information on claiming prizes for your winning Lottery Ticket. Not affiliated with www.keralalotteries.com "/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap-datepicker.standalone.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+</head>
+
+<body>
+<span id="pdf_base_64" value={{lottery['pdf_base_64']}} hidden></span>
+<span id="result" value={{lottery['details']['consolation']}} hidden></span>
+<div class="card results">
+    <div class="card-header">
+        <h1 class="card-title font-medium">{{lottery['name']}} , {{lottery['series']}} draw held on
+            {{lottery['date']}}</h1>
+        <ul class="nav nav-tabs card-header-tabs pull-right" id="resultTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="text-tab" data-toggle="tab" href="#text" role="tab" aria-controls="home"
+                   aria-selected="true">Text View</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="pdf-tab" data-toggle="tab" href="#pdf" role="tab" aria-controls="profile"
+                   aria-selected="false">PDF View</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <div class="tab-content" id="resultTabContent">
+            <div class="tab-pane fade show active" id="text" role="tabpanel" aria-labelledby="text-tab">
+                <div class="prizes card text-dark bg-primary-light border-primary">
+                    <div class="card-body">
+                        {% if lottery['details']['first'] is defined %}
+                        <div class="first-prize card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">First Prize - Rs.
+                                    {{lottery['details']['first']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['first']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['consolation'] is defined %}
+                        <div class="consolation-prize  card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Consolation Prize - Rs.
+                                    {{lottery['details']['consolation']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['consolation']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['second'] is defined %}
+                        <div class="second-prize card  bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Second Prize - Rs.
+                                    {{lottery['details']['second']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['second']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['third'] is defined %}
+                        <div class="third-prize card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Third Prize - Rs.
+                                    {{lottery['details']['third']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['third']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['fourth'] is defined %}
+                        <div class="fourth-prize card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Fourth Prize - Rs.
+                                    {{lottery['details']['fourth']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['fourth']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['fifth'] is defined %}
+                        <div class="fifth-prize  card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Fifth Prize - Rs.
+                                    {{lottery['details']['fifth']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['fifth']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['sixth'] is defined %}
+                        <div class="sixth-prize  card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Sixth Prize - Rs.
+                                    {{lottery['details']['sixth']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['sixth']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['seventh'] is defined %}
+                        <div class="seventh-prize  card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Seventh Prize - Rs.
+                                    {{lottery['details']['seventh']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['seventh']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['eighth'] is defined %}
+                        <div class="eighth-prize  card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Eighth Prize - Rs.
+                                    {{lottery['details']['eighth']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['eighth']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['ninth'] is defined %}
+                        <div class="ninth-prize  card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Ninth Prize - Rs.
+                                    {{lottery['details']['ninth']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['ninth']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if lottery['details']['tenth'] is defined %}
+                        <div class="tenth-prize  card bg-light text-dark border-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Tenth Prize - Rs.
+                                    {{lottery['details']['tenth']['prize_money']}}</h3>
+                            </div>
+                            <div class="card-body row">
+                                {% for prize in lottery['details']['tenth']['prizes'] %}
+                                <span class="col">{{prize}}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="pdf" role="tabpanel" aria-labelledby="pdf-tab">
+                <a id="urlToSource" href={{lottery['url']}} target="_blank"> Click here to go to Kerala Lotteries
+                    website.</a>
+                <div class="card pdf" id="cardPdf">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs pull-right" id="pdfTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="page-1-tab" data-toggle="tab" href="#page-1" role="tab"
+                                   aria-controls="home" aria-selected="true">Page 1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="page-2-tab" data-toggle="tab" href="#page-2" role="tab"
+                                   aria-controls="profile" aria-selected="false">Page 2</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content align-content-center" id="pdfTabContent">
+                            <div class="tab-pane fade show active" id="page-1" role="tabpanel"
+                                 aria-labelledby="page-1-tab">
+                                <canvas id="page-1-canvas"></canvas>
+                            </div>
+                            <div class="tab-pane fade" id="page-2" role="tabpanel" aria-labelledby="page-2-tab">
+                                <canvas id="page-2-canvas"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="../static/js/bootstrap-datepicker.js"></script>
+<script src="//cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="../static/js/bootstrap-datepicker.js"></script>
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
+<script>
+    $( document ).ready(function() {
+        console.log( "ready!" );
+        var isMobile = window.matchMedia("only screen and (max-width: 760px)");
+
+        if(!isMobile.matches ? true : false){
+            // atob() is used to convert base64 encoded PDF to binary-like data.
+            // (See also https://developer.mozilla.org/en-US/docs/Web/API/WindowBase64/
+            // Base64_encoding_and_decoding.)
+
+            var pdfData = $('#pdf_base_64').attr('value').slice(2, -1);
+            pdfData = atob(pdfData);
+            // Loaded via <script> tag, create shortcut to access PDF.js exports.
+            var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+            // The workerSrc property shall be specified.
+            pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+            // Using DocumentInitParameters object to load binary data.
+            var loadingTask = pdfjsLib.getDocument({data: pdfData});
+            loadingTask.promise.then(function(pdf) {
+                console.log('PDF loaded');
+
+                function renderByPage(pageNumber){
+                    pdf.getPage(pageNumber).then(function(page) {
+                        console.log('Page loaded');
+
+                        var scale = 1.5;
+                        var viewport = page.getViewport(scale);
+                        // Prepare canvas using PDF page dimensions
+                        var canvasId = 'page-'+pageNumber+'-canvas';
+                        var canvas = document.getElementById(canvasId);
+                        var context = canvas.getContext('2d');
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+                        // Render PDF page into canvas context
+                        var renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+                        var renderTask = page.render(renderContext);
+                            renderTask.then(function () {
+                            console.log('Page rendered');
+                            });
+                    });
+                }
+                // Fetch pages
+                for(pageNumber=1; pageNumber<3; pageNumber++){
+                    renderByPage(pageNumber);
+                }
+            }, function (reason) {
+              // PDF loading error
+              console.error(reason);
+            });
+        }
+        else{
+            $('#cardPdf').hide();
+        }
+    });
+
+</script>
+
+</body>
+</html>

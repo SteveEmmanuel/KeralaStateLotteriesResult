@@ -95,6 +95,14 @@ def result(lottery_id):
         return render_template('404.html')
     return render_template('result_view.html', lottery=query.first())
 
+
+@app.route('/adminresult/<lottery_id>')
+def adminresult(lottery_id):
+    query = db.session.query(Lottery).filter(Lottery.id.__eq__(lottery_id))
+    if query.count() == 0:
+        return render_template('404.html')
+    return render_template('admin_result_view.html', lottery=query.first())
+
 @app.route('/page', methods = ['GET', 'POST'])
 def paginate():
     search_value = request.form['search[value]']
