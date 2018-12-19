@@ -61,6 +61,11 @@ admin.add_view(FeedbackModelView(FeedBack, db.session, name='Feedback'))
 def home():
     return render_template('index.html')
 
+
+@app.route('/adminview')
+def adminview():
+    return render_template('adminview.html')
+
 @app.route('/prize-claim')
 def prize_claim():
     return render_template('prize_claim.html')
